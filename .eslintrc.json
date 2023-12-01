@@ -22,7 +22,7 @@
       "as-needed"
     ],
     "autofix/no-unused-vars": [
-      "error",
+      2,
       {
         "argsIgnorePattern": "^_",
         "ignoreRestSiblings": true,
@@ -38,6 +38,12 @@
     ],
     "react/react-in-jsx-scope": 0,
     "@typescript-eslint/no-explicit-any": 2,
+    "@typescript-eslint/consistent-type-imports": [
+      2,
+      {
+        "prefer": "type-imports"
+      }
+    ],
     "react/jsx-props-no-spreading": 0,
     "func-call-spacing": 2,
     "import/extensions": 0,
