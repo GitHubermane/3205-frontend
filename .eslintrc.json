@@ -6,10 +6,8 @@
     "autofix"
   ],
   "extends": [
-    "next",
     "airbnb",
     "airbnb-typescript",
-    "plugin:promise/recommended",
     "plugin:jsx-a11y/recommended"
   ],
   "parser": "@typescript-eslint/parser",
