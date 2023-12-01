@@ -1,0 +1,6 @@
+node_modules
+build
+vite.config.ts
+.eslintcache
+.eslintrc.json
+dist
