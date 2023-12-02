@@ -6,7 +6,7 @@ export const getUser = (
   email: string,
   telephone: string,
 ): Promise<AxiosResponse<UserResponse[]>> => {
-  const telephoneQuery = telephone ? `&telephone=${telephone}` : '';
+  const telephoneQuery = telephone ? `&number=${telephone}` : '';
 
   return $api.get<UserResponse[]>(`/user?email=${email}${telephoneQuery}`);
 };
