@@ -1,0 +1,21 @@
+$btn-height: 30px;
+$btn-colour: #444;
+
+.button {
+  margin: auto;
+  height: $btn-height;
+  width: fit-content;
+  padding: 5px 15px;
+  border-radius: calc($btn-height / 2);
+  background-color: transparent;
+  color: $btn-colour;
+  border: 1px solid $btn-colour;
+  font-weight: 500;
+  transition: all 0.2s;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $btn-colour;
+    color: #fff;
+  }
+}
