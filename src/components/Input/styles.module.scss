@@ -1,4 +1,5 @@
 $input-height: 35px;
+$error-colour: #ca1919;
 
 .input {
   &__block {
@@ -11,6 +12,7 @@ $input-height: 35px;
     text-align: center;
     margin-right: 10px;
   }
+
   &__body {
     flex: 1 1 80%;
     height: $input-height;
@@ -18,4 +20,13 @@ $input-height: 35px;
     border-radius: calc($input-height / 2);
     border: 1px solid #333;
   }
+}
+
+.error {
+  width: fit-content;
+  margin: 5px;
+  color: $error-colour;
+  border: 1px solid $error-colour;
+  padding: 5px 15px;
+  border-radius: 7px;
 }

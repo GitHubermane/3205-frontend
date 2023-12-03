@@ -5,21 +5,27 @@ import styles from './styles.module.scss';
 
 type PropsType = {
   value: string;
-  label: string;
   onChange: (value: string) => void;
+  label: string;
+  error: string;
+  onErrorChange: (value: string) => void;
   type?: InputType;
 };
 
 export const Input: FC<PropsType> = ({
-  label,
-  onChange,
   value,
+  onChange,
+  label,
+  error,
+  onErrorChange,
   type = 'text',
 }) => {
   const id = useId();
   // Для обычного текста
-  const onValueChange = (e: ChangeEvent<HTMLInputElement>) =>
+  const onValueChange = (e: ChangeEvent<HTMLInputElement>) => {
     onChange(e.currentTarget.value);
+    onErrorChange('');
+  };
 
   // Для номера телефона
   const onTelephoneChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -33,26 +39,30 @@ export const Input: FC<PropsType> = ({
     formattedTelephone = formattedTelephone.slice(0, -1); // Убираем последний дефис
 
     onChange(formattedTelephone);
+    onErrorChange('');
   };
 
   const isTelephone = type === InputType.telephone;
 
   return (
-    <div className={styles.input__block}>
-      <label
-        className={styles.input__label}
-        htmlFor={id}
-      >
-        {label}
-      </label>
-      <input
-        value={value}
-        onChange={isTelephone ? onTelephoneChange : onValueChange}
-        className={styles.input__body}
-        type="email"
-        placeholder={`Enter your ${label}`}
-        id={id}
-      />
+    <div className={styles.input}>
+      <div className={styles.input__block}>
+        <label
+          className={styles.input__label}
+          htmlFor={id}
+        >
+          {label}
+        </label>
+        <input
+          value={value}
+          onChange={isTelephone ? onTelephoneChange : onValueChange}
+          className={styles.input__body}
+          type="email"
+          placeholder={`Enter your ${label}`}
+          id={id}
+        />
+      </div>
+      {error && <div className={styles.error}>{error}</div>}
     </div>
   );
 };
