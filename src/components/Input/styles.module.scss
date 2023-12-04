@@ -20,11 +20,15 @@ $error-colour: #ca1919;
     border-radius: calc($input-height / 2);
     border: 1px solid #333;
   }
+
+  &__error {
+    border-color: $error-colour;
+  }
 }
 
 .error {
   width: fit-content;
-  margin: 5px;
+  margin: 5px auto;
   color: $error-colour;
   border: 1px solid $error-colour;
   padding: 5px 15px;

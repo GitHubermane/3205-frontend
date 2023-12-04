@@ -56,7 +56,9 @@ export const Input: FC<PropsType> = ({
         <input
           value={value}
           onChange={isTelephone ? onTelephoneChange : onValueChange}
-          className={styles.input__body}
+          className={`${styles.input__body} ${
+            error ? styles.input__error : ''
+          }`}
           type="email"
           placeholder={`Enter your ${label}`}
           id={id}
