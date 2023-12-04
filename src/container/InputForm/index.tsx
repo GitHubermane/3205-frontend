@@ -77,7 +77,7 @@ export const InputForm = () => {
       {users.length !== 0 && (
         <div>
           <h3>User:</h3>
-          {users.map(user => (
+          {users.map((user) => (
             <User {...user} />
           ))}
         </div>

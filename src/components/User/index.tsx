@@ -9,10 +9,14 @@ type PropsType = {
 export const User: FC<PropsType> = ({ email, number }) => (
   <div className={styles.user}>
     <div>
-      Email: <span>{email}</span>
+      Email: 
+      {' '}
+      <span>{email}</span>
     </div>
     <div>
-      Phone number: <span>{number}</span>
+      Phone number: 
+      {' '}
+      <span>{number}</span>
     </div>
   </div>
 );
