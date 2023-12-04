@@ -1,4 +1,4 @@
-import { Button, Input } from 'components';
+import { Button, Input, User } from 'components';
 import { useState } from 'react';
 import type { UserResponse } from 'types';
 import { InputType } from 'types';
@@ -7,6 +7,8 @@ import { numberValidator, emailValidator } from 'utils';
 import styles from './styles.module.scss';
 
 export const InputForm = () => {
+  // Т.к. приложение небольшое делал все через локальный стейт
+
   // Пользователи
   const [users, setUsers] = useState([] as UserResponse[]);
 
@@ -17,6 +19,8 @@ export const InputForm = () => {
   // Ошибки
   const [emailError, setEmailError] = useState('');
   const [telephoneError, setTelephoneError] = useState('');
+  // Загрузка
+  const [isLoading, setIsLoading] = useState(false);
 
   const isValidated = () => {
     // Убираем дефисы из телефона
@@ -38,10 +42,12 @@ export const InputForm = () => {
 
   const onGetUserClick = async () => {
     if (!isValidated()) return;
-
+    setIsLoading(true);
     // Убираем дефисы из телефона
     const number = telephone.replace(/[^0-9]/g, '');
     const { data } = await getUser(email, number);
+
+    setIsLoading(false);
     setUsers(data);
   };
 
@@ -67,14 +73,12 @@ export const InputForm = () => {
         text="Submit"
         onClick={onGetUserClick}
       />
+      {isLoading && <div>Loading...</div>}
       {users.length !== 0 && (
         <div>
-          User:
-          {users.map((user) => (
-            <div key={user.number}>
-              <div>{user.email}</div>
-              <div>{user.number}</div>
-            </div>
+          <h3>User:</h3>
+          {users.map(user => (
+            <User {...user} />
           ))}
         </div>
       )}
