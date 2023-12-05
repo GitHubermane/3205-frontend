@@ -13,12 +13,15 @@ export const InputForm = () => {
   const [users, setUsers] = useState([] as UserResponse[]);
 
   // Значения
-  const [email, setEmail] = useState('jams@gmail.com');
+  const [email, setEmail] = useState('');
   const [telephone, setTelephone] = useState('');
 
   // Ошибки
   const [emailError, setEmailError] = useState('');
   const [telephoneError, setTelephoneError] = useState('');
+
+  const [error, setError] = useState('');
+
   // Загрузка
   const [isLoading, setIsLoading] = useState(false);
 
@@ -45,13 +48,17 @@ export const InputForm = () => {
     if (!isValidated()) return;
 
     setIsLoading(true);
-
+    setError('');
     // Убираем дефисы из телефона
     const number = telephone.replace(/[^0-9]/g, '');
-    const { data } = await getUser(email, number);
-
-    setIsLoading(false);
-    setUsers(data);
+    try {
+      const { data } = await getUser(email, number);
+      setUsers(data);
+      setIsLoading(false);
+    } catch {
+      setError('Failed to get a response');
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -77,6 +84,7 @@ export const InputForm = () => {
         onClick={onGetUserClick}
       />
       {isLoading && <div>Loading...</div>}
+      {error && <div className={styles.error}>{error}</div>}
       {users.length !== 0 && (
         <div>
           <h3>User:</h3>
