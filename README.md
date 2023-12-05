@@ -1,30 +1,33 @@
-# React + TypeScript + Vite
+# Фронтенд
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Стек: React, TypeScript, Vite, Axios, SCSS, ESlint, Prettier, husky
 
-Currently, two official plugins are available:
+Для запуска проекта, сперва нужно в консоли ввести следующие команды:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+```bash
+pnpm i
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+Эта команда установит все пакеты и зависимости
+
+И после
+
+```bash
+pnpm run preview
+```
+
+Эта команда запустит проект по адресу _http:://localhost:4173_
+
+## Команды
+
+Для компиляции и сборки проекта
+
+```bash
+pnpm run build
+```
+
+Для запуска линтера
+
+```bash
+pnpm run lint
+```
