@@ -41,8 +41,11 @@ export const InputForm = () => {
   };
 
   const onGetUserClick = async () => {
+    // Отмена запроса, если не прошло валидацию
     if (!isValidated()) return;
+
     setIsLoading(true);
+
     // Убираем дефисы из телефона
     const number = telephone.replace(/[^0-9]/g, '');
     const { data } = await getUser(email, number);
@@ -77,7 +80,7 @@ export const InputForm = () => {
       {users.length !== 0 && (
         <div>
           <h3>User:</h3>
-          {users.map((user) => (
+          {users.map(user => (
             <User {...user} />
           ))}
         </div>
